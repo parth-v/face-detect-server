@@ -1,2 +1,2 @@
 ## Face Detect Server
-Includes server files required for face detection!
+Includes server api files required for face detection web app!
