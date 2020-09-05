@@ -1,6 +1,9 @@
+const validEmailRegex = 
+  RegExp(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i);
+
 const handleSignin = (req,res,bcrypt,db) => {
   const { email, password } = req.body;
-  if( !email || !password ) {
+  if( !email || !password || || !validEmailRegex.test(email)) {
     return res.status(400).json('Invalid Input!!');
   }
 	db.select('email','hash').from('login')

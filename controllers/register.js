@@ -1,6 +1,9 @@
+const validEmailRegex = 
+  RegExp(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i);
+
 const handleRegister = (req,res,db,bcrypt,saltRounds) => {
 	const { name, email, password } = req.body;
-	if(!name || !email || !password) {
+	if(!name || !email || !password || !validEmailRegex.test(email)) {
 		return res.status(400).json("Invalid input!!");
 	}
 	bcrypt.hash(password, saltRounds, function(err, hash) {

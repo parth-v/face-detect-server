@@ -7,7 +7,6 @@ const PORT = process.env.PORT || 3001;
 
 const register = require('./controllers/register'); 
 const signin = require('./controllers/signin'); 
-const profile = require('./controllers/profile'); 
 const image = require('./controllers/image');
 
 const db = knex({
@@ -28,8 +27,6 @@ app.use(cors());
 app.get('/', (req, res) => { res.json("Server Started!!"); });
 
 app.post('/signin', (req, res) => { signin.handleSignin(req, res, bcrypt, db) });
-
-app.get('/profile/:id', (req, res) => { profile.handleProfile(req,res,db) });
 
 app.put('/image', (req, res) => { image.handleImage(req,res,db) });
 
